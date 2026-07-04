@@ -23,6 +23,7 @@ import { useHistory } from "react-router-dom";
 import React, { useState, useRef } from "react";
 import axios from "axios";
 import { useToast } from "@chakra-ui/toast";
+
 import ChatLoading from "../ChatLoading";
 import { Spinner } from "@chakra-ui/spinner";
 import ProfileModal from "./ProfileModal";
@@ -31,6 +32,8 @@ import { Effect } from "react-notification-badge";
 import { getSender } from "../../config/ChatLogics";
 import UserListItem from "../userAvatar/UserListItem";
 import { ChatState } from "../../Context/ChatProvider";
+
+const API_URL = "https://pulsechat-backend-7t1s.onrender.com";
 
 function SideDrawer() {
   const [search, setSearch] = useState("");
@@ -86,7 +89,7 @@ function SideDrawer() {
         },
       };
 
-      const { data } = await axios.get(`/api/user?search=${search}`, config);
+      const { data } = await axios.get(`${API_URL}/api/user?search=${search}`, config);
       if (activeSearchQuery.current !== search) {
         return;
       }
@@ -122,7 +125,7 @@ function SideDrawer() {
           Authorization: `Bearer ${user.token}`,
         },
       };
-      const { data } = await axios.post(`/api/chat`, { userId }, config);
+      const { data } = await axios.post(`${API_URL}/api/chat`, { userId }, config);
 
       if (!chats.find((c) => c._id === data._id)) setChats([data, ...chats]);
       setSelectedChat(data);

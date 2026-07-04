@@ -7,6 +7,8 @@ import axios from "axios";
 import { useState } from "react";
 import { useHistory } from "react-router";
 
+const API_URL = "https://pulsechat-backend-7t1s.onrender.com";
+
 const Signup = ({ onSignupSuccess }) => {
   const [show, setShow] = useState(false);
   const handleClick = () => setShow(!show);
@@ -51,7 +53,7 @@ const Signup = ({ onSignupSuccess }) => {
         },
       };
       const { data } = await axios.post(
-        "/api/user",
+        `${API_URL}/api/user`,
         {
           name,
           email,

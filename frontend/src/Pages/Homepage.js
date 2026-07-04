@@ -15,6 +15,8 @@ import Login from "../components/Authentication/Login";
 import Signup from "../components/Authentication/Signup";
 import { ChatState } from "../Context/ChatProvider";
 
+const API_URL = "https://pulsechat-backend-7t1s.onrender.com";
+
 function Homepage() {
   const history = useHistory();
   const [tabIndex, setTabIndex] = useState(0);
@@ -32,7 +34,7 @@ function Homepage() {
                 Authorization: `Bearer ${user.token}`,
               },
             };
-            await axios.get("/api/user/validate", config);
+            await axios.get(`${API_URL}/api/user/validate`, config);
             // Session is valid, redirect to chats
             history.push("/chats");
             return;

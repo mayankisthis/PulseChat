@@ -9,6 +9,8 @@ import GroupChatModal from "./miscellaneous/GroupChatModal";
 import { Button } from "@chakra-ui/react";
 import { ChatState } from "../Context/ChatProvider";
 
+const API_URL = "https://pulsechat-backend-7t1s.onrender.com";
+
 const MyChats = ({ fetchAgain }) => {
 
   const { selectedChat, setSelectedChat, user, chats, setChats } = ChatState();
@@ -24,7 +26,7 @@ const MyChats = ({ fetchAgain }) => {
         },
       };
 
-      const { data } = await axios.get("/api/chat", config);
+      const { data } = await axios.get(`${API_URL}/api/chat`, config);
       setChats(data);
     } catch (error) {
       toast({
