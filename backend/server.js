@@ -1,4 +1,5 @@
 const express = require("express");
+const cors = require("cors");
 const connectDB = require("./config/db");
 const dotenv = require("dotenv");
 const userRoutes = require("./routes/userRoutes");
@@ -10,6 +11,15 @@ const path = require("path");
 dotenv.config();
 connectDB();
 const app = express();
+app.use(
+  cors({
+    origin: [
+      "http://localhost:3000",
+      "https://pulse-chat-nine-kohl.vercel.app",
+    ],
+    credentials: true,
+  })
+);
 
 app.use(express.json()); // to accept json data
 
@@ -53,7 +63,10 @@ const server = app.listen(
 const io = require("socket.io")(server, {
   pingTimeout: 60000,
   cors: {
-    origin: "http://localhost:3000",
+    origin: [
+      "http://localhost:3000",
+      "https://pulse-chat-nine-kohl.vercel.app",
+    ],
     // credentials: true,
   },
 });
