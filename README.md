@@ -10,6 +10,12 @@ Real-time chat platform built using the MERN stack and Socket.IO.
 
 **Database:** Mongo DB
   
+
+## Live Demo
+
+Frontend: https://pulse-chat-nine-kohl.vercel.app
+Backend: https://pulsechat-backend-7t1s.onrender.com
+
 ## Run Locally
 
 Clone the project
