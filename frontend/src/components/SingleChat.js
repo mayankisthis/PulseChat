@@ -105,7 +105,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
   };
 
   useEffect(() => {
-    socket = io("https://pulsechat-backend-7t1s.onrender.com");
+    socket = io(ENDPOINT);
     socket.emit("setup", user);
 
     const handleConnected = () => setSocketConnected(true);
